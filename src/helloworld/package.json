@@ -8,8 +8,10 @@
   },
   "license": "MIT",
   "dependencies": {
-    "aurelia-bootstrapper": "^2.1.0",
     "aurelia-animator-css": "^1.0.1",
+    "aurelia-bootstrapper": "^2.1.0",
+    "aurelia-fetch-client": "^1.1.2",
+    "aurelia-http-client": "^1.1.1",
     "bluebird": "^3.4.1",
     "requirejs": "^2.3.2",
     "text": "github:requirejs/text#latest"
@@ -17,6 +19,7 @@
   "peerDependencies": {},
   "devDependencies": {
     "aurelia-cli": "^0.27.0",
+    "aurelia-fetch-client": "^1.1.2",
     "aurelia-testing": "^1.0.0-beta.2.0.1",
     "aurelia-tools": "^1.0.0",
     "browser-sync": "^2.13.0",

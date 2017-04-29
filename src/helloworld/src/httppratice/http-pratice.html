@@ -1,0 +1,20 @@
+<template>
+  <require from="../readme/read-me"></require>
+  <div class="container">
+    <read-me title.bind="title" description.bind="description"></read-me>
+
+    <h3>Youtube Search </h3>
+
+    <input id="search-box" onkeyup.bind="onkeyup()" class="form-control" />
+    <div class="row" style="margin-bottom:10px; margin-top: 10px;">
+<div class="col-md-6">
+  <img [src]="result.snippet.thumbnails.high.url" class="img-rounded" alt="Cinque Terre" />
+</div>
+  <div class="col-md-6">
+    <a href="https://www.youtube.com/watch?v={{result.id.videoId}}" target="_blank">
+      <h3>{{result.snippet.title}}</h3>
+    </a>
+    <p>{{result.snippet.description}}
+  </div>
+</div>
+</template>

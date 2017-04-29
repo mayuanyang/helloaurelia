@@ -1,6 +1,11 @@
+import { bindable } from "aurelia-framework";
+
 export class ReadMe {     
-  constructor() {
-    this.title = 'title here';
-    this.description = 'description here';
+  @bindable title = "title goes here";
+  @bindable description = "description goes here";
+  @bindable style = "info";
+
+  contructor(){
+    console.log('i am readme');
   }
 }

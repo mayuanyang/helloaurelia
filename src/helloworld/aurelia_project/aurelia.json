@@ -101,6 +101,8 @@
           "aurelia-bootstrapper",
           "aurelia-dependency-injection",
           "aurelia-event-aggregator",
+          "aurelia-fetch-client",
+          
           "aurelia-framework",
           "aurelia-history",
           "aurelia-history-browser",
@@ -129,6 +131,7 @@
             "path": "../node_modules/aurelia-templating-router/dist/amd",
             "main": "aurelia-templating-router"
           },
+          
           {
             "name": "aurelia-testing",
             "path": "../node_modules/aurelia-testing/dist/amd",
