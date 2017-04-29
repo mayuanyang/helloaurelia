@@ -3,6 +3,10 @@
     <div class="panel-heading">${title}</div>
     <div class="panel-body">
       ${description}
+      <p></p>
+      <ul class="list-group">
+        <li class="list-group-item" repeat.for="item of items">${item.description}</li>
+      </ul>
     </div>
   </div>
 </template>

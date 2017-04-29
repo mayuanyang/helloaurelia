@@ -108,6 +108,82 @@ define('aboutme/aboutme',['exports'], function (exports) {
     this.message = 'My name is Eddy Ma';
   };
 });
+define('httppratice/http-pratice',['exports', '../modules/youtube.service', 'aurelia-framework'], function (exports, _youtube, _aureliaFramework) {
+  'use strict';
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  exports.HttpPratice = undefined;
+
+  function _classCallCheck(instance, Constructor) {
+    if (!(instance instanceof Constructor)) {
+      throw new TypeError("Cannot call a class as a function");
+    }
+  }
+
+  var _dec, _class;
+
+  var HttpPratice = exports.HttpPratice = (_dec = (0, _aureliaFramework.inject)(_youtube.YoutubeService), _dec(_class = function () {
+    function HttpPratice(youtubeService) {
+      _classCallCheck(this, HttpPratice);
+
+      this.term = "";
+
+      this.youtubeService = youtubeService;
+
+      this.title = "Http Pratice";
+      this.description = "This pratice is to use the build in aurelia-fetch-client to fetch the videos from youtube by using youtube api. ";
+      this.items = [{ description: "Create module to talk to youtube api" }, { description: "Use dependancy injection to inject the youtube module" }, { description: "Use Rxjs to handle the onkeyup event with conditions of: wait for 300ms pause in events, ignore if next search term is same as previous" }];
+    }
+
+    HttpPratice.prototype.onkeyup = function onkeyup() {
+      var self = this;
+      this.youtubeService.fetch(this.term).then(function (response) {
+        return response.json();
+      }).then(function (data) {
+        self.videos = data.items;
+      });;
+    };
+
+    return HttpPratice;
+  }()) || _class);
+});
+define('modules/youtube.service',['exports', 'aurelia-fetch-client'], function (exports, _aureliaFetchClient) {
+    'use strict';
+
+    Object.defineProperty(exports, "__esModule", {
+        value: true
+    });
+    exports.YoutubeService = undefined;
+
+    function _classCallCheck(instance, Constructor) {
+        if (!(instance instanceof Constructor)) {
+            throw new TypeError("Cannot call a class as a function");
+        }
+    }
+
+    var YoutubeService = exports.YoutubeService = function () {
+        function YoutubeService() {
+            _classCallCheck(this, YoutubeService);
+
+            this.webapiUrl = 'https://www.googleapis.com/youtube/v3/search';
+            this.api_key = 'AIzaSyDrPpZkJ6tBkdCemWS3jXu6zKTipcZA7SQ';
+            this.client = new _aureliaFetchClient.HttpClient();
+        }
+
+        YoutubeService.prototype.fetch = function fetch(term) {
+            console.log(term);
+            var url = this.webapiUrl + '?q=' + term + '&part=snippet&maxResults=25&key=' + this.api_key;
+            var result = this.client.fetch(url);
+
+            console.log(result);
+            return result;
+        };
+
+        return YoutubeService;
+    }();
+});
 define('home/home',["exports"], function (exports) {
   "use strict";
 
@@ -128,48 +204,6 @@ define('home/home',["exports"], function (exports) {
     this.style = "default";
     this.description = "Please click on the following cards to see what the pratice is";
   };
-});
-define('httppratice/http-pratice',['exports', 'aurelia-fetch-client'], function (exports, _aureliaFetchClient) {
-  'use strict';
-
-  Object.defineProperty(exports, "__esModule", {
-    value: true
-  });
-  exports.HttpPratice = undefined;
-
-  function _classCallCheck(instance, Constructor) {
-    if (!(instance instanceof Constructor)) {
-      throw new TypeError("Cannot call a class as a function");
-    }
-  }
-
-  var HttpPratice = exports.HttpPratice = function () {
-    function HttpPratice() {
-      _classCallCheck(this, HttpPratice);
-
-      this.term = "aurelia";
-      var webapiUrl = 'https://www.googleapis.com/youtube/v3/search';
-      var api_key = 'AIzaSyDrPpZkJ6tBkdCemWS3jXu6zKTipcZA7SQ';
-      var url = webapiUrl + '?q=' + this.term + '&part=snippet&maxResults=25&key=' + api_key;
-      console.log(url);
-
-      this.title = "Http Pratice";
-      this.description = "This pratice is to use the build in aurelia-fetch-client to fetch the videos from youtube by using youtube api. ";
-      this.client = new _aureliaFetchClient.HttpClient();
-      this.client.fetch(url).then(function (response) {
-        return response.json();
-      }).then(function (data) {
-        console.log(data);
-      });
-    }
-
-    HttpPratice.prototype.onkeyup = function onkeyup() {
-
-      console.log('keyup');
-    };
-
-    return HttpPratice;
-  }();
 });
 define('navbar/navbar',["exports", "aurelia-framework"], function (exports, _aureliaFramework) {
   "use strict";
@@ -241,6 +275,15 @@ define('navbar/navbar',["exports", "aurelia-framework"], function (exports, _aur
     }
   })), _class);
 });
+define('resources/index',["exports"], function (exports) {
+  "use strict";
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  exports.configure = configure;
+  function configure(config) {}
+});
 define('readme/read-me',["exports", "aurelia-framework"], function (exports, _aureliaFramework) {
   "use strict";
 
@@ -298,7 +341,7 @@ define('readme/read-me',["exports", "aurelia-framework"], function (exports, _au
     throw new Error('Decorating class property failed. Please ensure that transform-class-properties is enabled.');
   }
 
-  var _desc, _value, _class, _descriptor, _descriptor2, _descriptor3;
+  var _desc, _value, _class, _descriptor, _descriptor2, _descriptor3, _descriptor4;
 
   var ReadMe = exports.ReadMe = (_class = function () {
     function ReadMe() {
@@ -309,6 +352,8 @@ define('readme/read-me',["exports", "aurelia-framework"], function (exports, _au
       _initDefineProp(this, "description", _descriptor2, this);
 
       _initDefineProp(this, "style", _descriptor3, this);
+
+      _initDefineProp(this, "items", _descriptor4, this);
     }
 
     ReadMe.prototype.contructor = function contructor() {
@@ -331,22 +376,18 @@ define('readme/read-me',["exports", "aurelia-framework"], function (exports, _au
     initializer: function initializer() {
       return "info";
     }
+  }), _descriptor4 = _applyDecoratedDescriptor(_class.prototype, "items", [_aureliaFramework.bindable], {
+    enumerable: true,
+    initializer: function initializer() {
+      return [];
+    }
   })), _class);
-});
-define('resources/index',["exports"], function (exports) {
-  "use strict";
-
-  Object.defineProperty(exports, "__esModule", {
-    value: true
-  });
-  exports.configure = configure;
-  function configure(config) {}
 });
 define('text!app.html', ['module'], function(module) { module.exports = "<template><require from=\"navbar/navbar\"></require><div class=\"row\"><navbar router.bind=\"router\"></navbar></div><div class=\"row\"><router-view></router-view></div></template>"; });
 define('text!aboutme/aboutme.html', ['module'], function(module) { module.exports = "<template><h1>${message}</h1></template>"; });
 define('text!contactme/contactme.html', ['module'], function(module) { module.exports = "<template><h1>${message}</h1></template>"; });
 define('text!home/home.html', ['module'], function(module) { module.exports = "<template><video loop=\"\" autoplay=\"\" id=\"slider-video\"><source src=\"https://s3-ap-southeast-2.amazonaws.com/tatts-group-website-storage/wp-content/uploads/2016/08/15114716/Tatts-Group-values-cutdown-960-V2.mp4\" type=\"video/mp4\">Your browser doesn't support HTML5 video tag</video></template>"; });
-define('text!httppratice/http-pratice.html', ['module'], function(module) { module.exports = "<template><require from=\"../readme/read-me\"></require><div class=\"container\"><read-me title.bind=\"title\" description.bind=\"description\"></read-me><h3>Youtube Search</h3><input id=\"search-box\" onkeyup.bind=\"onkeyup()\" class=\"form-control\"><div class=\"row\" style=\"margin-bottom:10px;margin-top:10px\"><div class=\"col-md-6\"><img [src]=\"result.snippet.thumbnails.high.url\" class=\"img-rounded\" alt=\"Cinque Terre\"></div><div class=\"col-md-6\"><a href=\"https://www.youtube.com/watch?v={{result.id.videoId}}\" target=\"_blank\"><h3>{{result.snippet.title}}</h3></a><p>{{result.snippet.description}}</p></div></div></div></template>"; });
-define('text!readme/read-me.html', ['module'], function(module) { module.exports = "<template><div class=\"panel panel-${style}\"><div class=\"panel-heading\">${title}</div><div class=\"panel-body\">${description}</div></div></template>"; });
+define('text!httppratice/http-pratice.html', ['module'], function(module) { module.exports = "<template><require from=\"../readme/read-me\"></require><div class=\"container\"><read-me title.bind=\"title\" description.bind=\"description\" items.bind=\"items\"></read-me><h3>Youtube Search</h3><div class=\"input-group\"><span class=\"input-group-addon\" id=\"basic-addon1\">Search youtube</span> <input id=\"search-box\" type=\"text\" class=\"form-control\" placeholder=\"\" aria-describedby=\"basic-addon1\" keyup.trigger=\"onkeyup()\" value.bind=\"term\"></div><div class=\"row\" repeat.for=\"result of videos\" style=\"margin-bottom:10px;margin-top:10px\"><div class=\"col-md-6\"><img src=\"${result.snippet.thumbnails.high.url}\" class=\"img-rounded\" alt=\"\"></div><div class=\"col-md-6\"><a href=\"https://www.youtube.com/watch?v=${result.id.videoId}\" target=\"_blank\"><h3>${result.snippet.title}</h3></a><p>${result.snippet.description}</p></div></div></div></template>"; });
 define('text!navbar/navbar.html', ['module'], function(module) { module.exports = "<template><nav class=\"navbar navbar-default\"><div class=\"container-fluid\"><div class=\"navbar-header\"><button type=\"button\" class=\"navbar-toggle collapsed\" data-toggle=\"collapse\" data-target=\"#bs-example-navbar-collapse-1\" aria-expanded=\"false\"><span class=\"sr-only\">Toggle navigation</span> <span class=\"icon-bar\"></span> <span class=\"icon-bar\"></span> <span class=\"icon-bar\"></span></button> <a class=\"navbar-brand\" href=\"#\">Aurelia Pratices</a></div><div class=\"collapse navbar-collapse\" id=\"bs-example-navbar-collapse-1\"><ul class=\"nav navbar-nav\"><li repeat.for=\"row of router.navigation\" class=\"${row.isActive ? 'active' : ''}\"><a href.bind=\"row.href\">${ row.title }</a></li></ul></div></div></nav></template>"; });
+define('text!readme/read-me.html', ['module'], function(module) { module.exports = "<template><div class=\"panel panel-${style}\"><div class=\"panel-heading\">${title}</div><div class=\"panel-body\">${description}<p></p><ul class=\"list-group\"><li class=\"list-group-item\" repeat.for=\"item of items\">${item.description}</li></ul></div></div></template>"; });
 //# sourceMappingURL=app-bundle.js.map
