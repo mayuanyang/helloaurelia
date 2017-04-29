@@ -1,5 +1,5 @@
+import { bindable } from "aurelia-framework";
+
 export class Navbar {     
-  constructor() {
-    this.message = 'Hello world';
-  }
+  @bindable router = null;
 }

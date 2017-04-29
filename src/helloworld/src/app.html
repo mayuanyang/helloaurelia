@@ -1,4 +1,9 @@
 <template>
-  <h1>${message}</h1>
-  
+  <require from="navbar/navbar"></require>
+  <div class="container">
+    <navbar router.bind="router"></navbar>
+    <div>
+      <router-view></router-view>
+    </div>
+  </div>
 </template>
