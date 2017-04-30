@@ -8,7 +8,8 @@ export class App {
       { route: ['contact'],    nav: true,   name: 'contact me', title: 'Contact Me',       moduleId: 'contactme/contactme' },
       { route: ['http'],    nav: true,   name: 'http', title: 'Http Pratice',       moduleId: 'httppratice/http-pratice' },
       { route: ['dynamicloader'],    nav: true,   name: 'dynamicloader', title: 'Dynamic Component Loader',       moduleId: 'dynamicloader/dynamic-loader' },
-      { route: ['nosql'],    nav: true,   name: 'nosql', title: 'Connect to Database',       moduleId: 'nosql/nosql' }
+      { route: ['nosql'],    nav: true,   name: 'nosql', title: 'Connect to Database',       moduleId: 'nosql/nosql' },
+      { route: ['authentication'],    nav: true,   name: 'authentication', title: 'Authentication',       moduleId: 'authentication/authentication' }
     ]);
   }
 

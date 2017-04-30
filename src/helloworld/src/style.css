@@ -4,11 +4,17 @@
 
 .navbar{
     margin-bottom: 0px;
+    
+    font-size: 16px;
 }
 
 video {
-    width: 1516px;
-    display: block;
+    width: 100%;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+    top:50px; /* start 470px below top left corner */
+    bottom: 0px; /* This is the trick - specify bottom instead of height */
+    left:0px;
 }
 
 .component-box{
@@ -22,4 +28,136 @@ video {
     -webkit-box-shadow: none;
     box-shadow: none;
     border-style: solid;
+}
+
+.grid{
+    margin-top: 20px;
+    display: block;
+}
+
+.grid-item{
+    width: 33.33%;
+    display: block;
+    float: left;
+}
+
+.pod__item__image {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    margin: 0 auto 30px;
+    border-radius: 1000px;
+    overflow: hidden;
+    background-color: #003e69;
+}
+
+.pod__item__heading {
+    font-size: 20px;
+    line-height: 1em;
+    margin-bottom: .5em;
+    text-transform: uppercase;
+    color: #003e69;
+    text-align: center;
+        font-weight: 700;
+}
+
+.pod__item__heading1{
+    color: #116900;
+}
+
+.pod__item__heading2{
+    color: #003e69;
+}
+
+.pod__item__heading3{
+    color: #8a6d3b;
+}
+
+.pod__item__1{
+    background-color: #116900;
+}
+
+
+
+.pod__item__2{
+    background-color: #003e69;
+    color: #003e69;
+}
+
+.pod__item__3{
+    background-color: #8a6d3b;
+    color: #8a6d3b;
+}
+
+.pod__item__image__mask {
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    bottom: 2px;
+    left: 2px;
+    background-color: #fff;
+    border-radius: 1000px;
+}
+
+.pod__item__image img {
+    width: 138px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+}
+
+.project-description {
+    min-height: 200px;
+    color: white;
+    margin: 0;
+    padding: 0;
+    background-image: -webkit-gradient(linear, top, from(#6E4D9B), to(#E82887));
+    background-image: -webkit-linear-gradient(top, #6E4D9B, #E82887);
+    background-image: -moz-linear-gradient(top, #6E4D9B, #E82887);
+    background-image: linear-gradient(to top, #6E4D9B, #E82887);
+}
+
+.project-description .big-title{
+    font-size: 40px;
+    text-align: center;
+    color: white;
+}
+
+.project-description .big-title .small{
+    font-size: 20px;
+    text-align: center;
+    color: white;
+}
+
+.project-description .content{
+    font-size: 20px;
+    text-align: center;
+    color: white;
+}
+
+
+/*Business Card Css */
+.business-card {
+  border: 1px solid #cccccc;
+  background: #f8f8f8;
+  padding: 10px;
+  border-radius: 4px;
+  margin-bottom: 10px;
+}
+.profile-img {
+  height: 120px;
+  background: white;
+}
+.job {
+  color: #666666;
+  font-size: 17px;
+}
+.mail {
+  font-size: 16px;
+ }
+
+.col-sm-6{
+    padding-left: 0px;
 }

@@ -1,6 +1,65 @@
 <template>
-  <video loop="" autoplay="" id="slider-video">
-    <source src="https://s3-ap-southeast-2.amazonaws.com/tatts-group-website-storage/wp-content/uploads/2016/08/15114716/Tatts-Group-values-cutdown-960-V2.mp4"
-      type="video/mp4"> Your browser doesn't support HTML5 video tag
-  </video>
+  <div class="home">
+    <video loop="" autoplay="" id="slider-video">
+      <source src="https://s3-ap-southeast-2.amazonaws.com/tatts-group-website-storage/wp-content/uploads/2016/08/15114716/Tatts-Group-values-cutdown-960-V2.mp4"
+        type="video/mp4"> Your browser doesn't support HTML5 video tag
+    </video>
+    <div class="container grid">
+      <div class="grid-item grid__item--third">
+        <div class="pod__item pod__item--purple js-wow fadeInUp" data-wow-delay="0.1s" data-wow-offset="20" data-wow-duration="1s"
+          style="visibility: visible; animation-duration: 1s; animation-delay: 0.1s; animation-name: fadeInUp;">
+
+            <div class="pod__item__image pod__item__1">
+
+              <div class="pod__item__image__mask">
+                <img src="../assets/images/testability.png" alt="testability">
+              </div>
+            </div>
+            <h4 class="pod__item__heading pod__item__heading1">Testability</h4>
+        </div>
+      </div>
+      <div class="grid-item grid__item--third">
+        <div class="pod__item pod__item--purple js-wow fadeInUp" data-wow-delay="0.1s" data-wow-offset="20" data-wow-duration="1s"
+          style="visibility: visible; animation-duration: 1s; animation-delay: 0.1s; animation-name: fadeInUp;">
+
+            <div class="pod__item__image pod__item__2">
+
+              <div class="pod__item__image__mask">
+
+                <img src="../assets/images/maintainability.jpg" alt="Maintainability">
+              </div>
+            </div>
+            <h4 class="pod__item__heading pod__item__heading2">Maintainability</h4>
+        </div>
+      </div>
+      <div class="grid-item grid__item--third">
+        <div class="pod__item pod__item--purple js-wow fadeInUp" data-wow-delay="0.1s" data-wow-offset="20" data-wow-duration="1s"
+          style="visibility: visible; animation-duration: 1s; animation-delay: 0.1s; animation-name: fadeInUp;">
+            <div class="pod__item__image pod__item__3">
+              <div class="pod__item__image__mask">
+                <img src="../assets/images/Extensibility.jpg" alt="Extensibility">
+              </div>
+            </div>
+            <h4 class="pod__item__heading pod__item__heading3">Extensibility</h4>
+        </div>
+      </div>
+    </div>
+    <div class="project-description">
+      <div class="big-title">
+        Aurelia allows us to focus on business logic, not on the framework - so concise and simple, yet so powerful and flexible!<br>
+        <small class="small">Ats Uiboupin</small>
+      </div>
+      <div class="content">
+        This site is mainly setup for study purpose, it including the following items
+        <ul>
+          <li>
+            Router
+          </li>
+          <li>
+            Use http module to send request
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
 </template>

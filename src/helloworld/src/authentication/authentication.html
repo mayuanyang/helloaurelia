@@ -1,0 +1,26 @@
+<template>
+  <require from="../readme/read-me"></require>
+  <div class="container">
+    <read-me title.bind="title" description.bind="description" items.bind="items"></read-me>
+    <button click.trigger="login()" class="btn btn-primary">Login</button>
+    <button click.trigger="logout()" class="btn btn-warning">Logout</button>
+  </div>
+  <br>
+  <div class="container" if.bind="user != undefined">
+    <div class="row">
+          <div class="col-sm-6">
+              <div class="business-card">
+                  <div class="media">
+                      <div class="media-left">
+                          <img class="media-object img-circle profile-img" src="${user.photoURL}">
+                      </div>
+                      <div class="media-body">
+                          <h2 class="media-heading">${user.displayName}</h2>
+                          <div class="mail"><a href="mailto:daniel@bla.ch">${user.email}</a> </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+    </div>
+</div>
+</template>
