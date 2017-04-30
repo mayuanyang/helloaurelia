@@ -1,0 +1,25 @@
+.row{
+    margin: 0;
+}
+
+.navbar{
+    margin-bottom: 0px;
+}
+
+video {
+    width: 1516px;
+    display: block;
+}
+
+.component-box{
+    margin: 10px 10px 10px 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: #fff;
+    border-color: #ddd;
+    border-width: 1px;
+    border-radius: 4px 4px 0 0;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    border-style: solid;
+}

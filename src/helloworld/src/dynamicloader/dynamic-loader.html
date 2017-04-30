@@ -1,0 +1,20 @@
+<template>
+  <require from="../readme/read-me"></require>
+  <div class="container">
+    <read-me title.bind="title" description.bind="description"></read-me>
+
+    <ul class="list-group">
+      <li class="list-group-item" repeat.for="component of components">
+        <div class="btn-group" role="group" aria-label="..." style="float: right; margin-bottom: 5px;">
+        <button click.trigger="addComponent(component)" class="btn btn-sm btn-success" >Add</button>
+        
+        </div>
+        ${component.name}
+      </li>
+    </ul>
+  </div>
+  <div class="row component-box" repeat.for="vm of viewModels">
+    <button click.trigger="removeComponent($index)" class="btn btn-sm btn-danger">Remove</button>
+    <compose view-model.bind="vm.path" ></compose>
+  </div>
+</template>
