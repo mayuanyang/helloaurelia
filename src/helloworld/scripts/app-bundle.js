@@ -15,7 +15,7 @@ define('app',['exports'], function (exports) {
     App.prototype.configureRouter = function configureRouter(config, router) {
       this.router = router;
       config.title = 'Aurelia';
-      config.map([{ route: ['', 'home'], nav: true, name: 'home', title: 'Home', moduleId: 'home/home' }, { route: ['about'], nav: true, name: 'about me', title: 'About Me', moduleId: 'aboutme/aboutme' }, { route: ['contact'], nav: true, name: 'contact me', title: 'Contact Me', moduleId: 'contactme/contactme' }, { route: ['http'], nav: true, name: 'http', title: 'Http Pratice', moduleId: 'httppratice/http-pratice' }, { route: ['dynamicloader'], nav: true, name: 'dynamicloader', title: 'Dynamic Component Loader', moduleId: 'dynamicloader/dynamic-loader' }]);
+      config.map([{ route: ['', 'home'], nav: true, name: 'home', title: 'Home', moduleId: 'home/home' }, { route: ['about'], nav: true, name: 'about me', title: 'About Me', moduleId: 'aboutme/aboutme' }, { route: ['contact'], nav: true, name: 'contact me', title: 'Contact Me', moduleId: 'contactme/contactme' }, { route: ['http'], nav: true, name: 'http', title: 'Http Pratice', moduleId: 'httppratice/http-pratice' }, { route: ['dynamicloader'], nav: true, name: 'dynamicloader', title: 'Dynamic Component Loader', moduleId: 'dynamicloader/dynamic-loader' }, { route: ['nosql'], nav: true, name: 'nosql', title: 'Connect to Database', moduleId: 'nosql/nosql' }]);
     };
 
     function App() {
@@ -137,10 +137,15 @@ define('dynamicloader/dynamic-loader',["exports"], function (exports) {
         id: "3",
         name: "Contact Me",
         path: "../contactme/contactme"
+      }, {
+        id: "4",
+        name: "Home",
+        path: "../home/home"
       }];
 
       this.title = "Dynamic Component Loading";
-      this.description = "It is quite often that you only know what components need to be loaded until runtime, Aurelia provides a dynamic loading element <compose> which will helo with that";
+      this.description = "It is quite often that you only know what components need to be loaded until runtime, Aurelia provides a dynamic loading element <compose> to accomplish that";
+      this.items = [{ description: "Add or Remove component on the fly" }, { description: "Each component has its own state" }];
       this.viewModels = [];
     }
 
@@ -253,6 +258,41 @@ define('modules/youtube.service',['exports', 'aurelia-fetch-client'], function (
         return YoutubeService;
     }();
 });
+define('nosql/nosql',["exports"], function (exports) {
+  "use strict";
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+
+  function _classCallCheck(instance, Constructor) {
+    if (!(instance instanceof Constructor)) {
+      throw new TypeError("Cannot call a class as a function");
+    }
+  }
+
+  var Nosql = exports.Nosql = function () {
+    function Nosql() {
+      _classCallCheck(this, Nosql);
+
+      this.title = 'Using Database';
+      this.description = "This pratice is to connect to a nosql database and manage the data";
+      this.items = [{ description: "Use Firebase as the backend database" }, { description: "Use form and validation to add and update data" }];
+    }
+
+    Nosql.prototype.getData = function getData() {
+      var self = this;
+      var ref = firebase.database().ref("/Makes");
+      ref.on('value', function (snapshot) {
+        self.makes = snapshot.val();
+      }, function (errorObject) {
+        console.log("The read failed: " + errorObject.code);
+      });
+    };
+
+    return Nosql;
+  }();
+});
 define('navbar/navbar',["exports", "aurelia-framework"], function (exports, _aureliaFramework) {
   "use strict";
 
@@ -322,15 +362,6 @@ define('navbar/navbar',["exports", "aurelia-framework"], function (exports, _aur
       return null;
     }
   })), _class);
-});
-define('resources/index',["exports"], function (exports) {
-  "use strict";
-
-  Object.defineProperty(exports, "__esModule", {
-    value: true
-  });
-  exports.configure = configure;
-  function configure(config) {}
 });
 define('readme/read-me',["exports", "aurelia-framework"], function (exports, _aureliaFramework) {
   "use strict";
@@ -431,14 +462,23 @@ define('readme/read-me',["exports", "aurelia-framework"], function (exports, _au
     }
   })), _class);
 });
+define('resources/index',["exports"], function (exports) {
+  "use strict";
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  exports.configure = configure;
+  function configure(config) {}
+});
 define('text!style.css', ['module'], function(module) { module.exports = ".row{\r\n    margin: 0;\r\n}\r\n\r\n.navbar{\r\n    margin-bottom: 0px;\r\n}\r\n\r\nvideo {\r\n    width: 1516px;\r\n    display: block;\r\n}\r\n\r\n.component-box{\r\n    margin: 10px 10px 10px 10px;\r\n    padding-top: 10px;\r\n    padding-bottom: 10px;\r\n    background-color: #fff;\r\n    border-color: #ddd;\r\n    border-width: 1px;\r\n    border-radius: 4px 4px 0 0;\r\n    -webkit-box-shadow: none;\r\n    box-shadow: none;\r\n    border-style: solid;\r\n}"; });
 define('text!app.html', ['module'], function(module) { module.exports = "<template><require from=\"navbar/navbar\"></require><require from=\"style.css\"></require><div class=\"row\"><navbar router.bind=\"router\"></navbar></div><div class=\"row\"><router-view></router-view></div></template>"; });
 define('text!aboutme/aboutme.html', ['module'], function(module) { module.exports = "<template><h1>${message}</h1></template>"; });
+define('text!dynamicloader/dynamic-loader.html', ['module'], function(module) { module.exports = "<template><require from=\"../readme/read-me\"></require><div class=\"container\"><read-me title.bind=\"title\" description.bind=\"description\" items.bind=\"items\"></read-me><h3>Components to be loaded</h3><ul class=\"list-group\"><li class=\"list-group-item\" repeat.for=\"component of components\"><div class=\"btn-group\" role=\"group\" aria-label=\"...\" style=\"float:right;margin-bottom:5px\"><button click.trigger=\"addComponent(component)\" class=\"btn btn-sm btn-success\">Add</button></div>${component.name}</li></ul></div><div class=\"row component-box\" repeat.for=\"vm of viewModels\"><button click.trigger=\"removeComponent($index)\" class=\"btn btn-sm btn-danger\">Remove</button><compose view-model.bind=\"vm.path\"></compose></div></template>"; });
 define('text!contactme/contactme.html', ['module'], function(module) { module.exports = "<template><h1>${message}</h1></template>"; });
-define('text!dynamicloader/dynamic-loader.html', ['module'], function(module) { module.exports = "<template><require from=\"../readme/read-me\"></require><div class=\"container\"><read-me title.bind=\"title\" description.bind=\"description\"></read-me><ul class=\"list-group\"><li class=\"list-group-item\" repeat.for=\"component of components\"><div class=\"btn-group\" role=\"group\" aria-label=\"...\" style=\"float:right;margin-bottom:5px\"><button click.trigger=\"addComponent(component)\" class=\"btn btn-sm btn-success\">Add</button></div>${component.name}</li></ul></div><div class=\"row component-box\" repeat.for=\"vm of viewModels\"><button click.trigger=\"removeComponent($index)\" class=\"btn btn-sm btn-danger\">Remove</button><compose view-model.bind=\"vm.path\"></compose></div></template>"; });
 define('text!home/home.html', ['module'], function(module) { module.exports = "<template><video loop=\"\" autoplay=\"\" id=\"slider-video\"><source src=\"https://s3-ap-southeast-2.amazonaws.com/tatts-group-website-storage/wp-content/uploads/2016/08/15114716/Tatts-Group-values-cutdown-960-V2.mp4\" type=\"video/mp4\">Your browser doesn't support HTML5 video tag</video></template>"; });
 define('text!httppratice/http-pratice.html', ['module'], function(module) { module.exports = "<template><require from=\"../readme/read-me\"></require><div class=\"container\"><read-me title.bind=\"title\" description.bind=\"description\" items.bind=\"items\"></read-me><h3>Youtube Search</h3><div class=\"input-group\"><span class=\"input-group-addon\" id=\"basic-addon1\">Search youtube</span> <input id=\"search-box\" type=\"text\" class=\"form-control\" placeholder=\"\" aria-describedby=\"basic-addon1\" keyup.trigger=\"onkeyup()\" value.bind=\"term\"></div><div class=\"row\" repeat.for=\"result of videos\" style=\"margin-bottom:10px;margin-top:10px\"><div class=\"col-md-6\"><img src=\"${result.snippet.thumbnails.high.url}\" class=\"img-rounded\" alt=\"\"></div><div class=\"col-md-6\"><a href=\"https://www.youtube.com/watch?v=${result.id.videoId}\" target=\"_blank\"><h3>${result.snippet.title}</h3></a><p>${result.snippet.description}</p></div></div></div></template>"; });
 define('text!navbar/navbar.html', ['module'], function(module) { module.exports = "<template><nav class=\"navbar navbar-default\"><div class=\"container-fluid\"><div class=\"navbar-header\"><button type=\"button\" class=\"navbar-toggle collapsed\" data-toggle=\"collapse\" data-target=\"#bs-example-navbar-collapse-1\" aria-expanded=\"false\"><span class=\"sr-only\">Toggle navigation</span> <span class=\"icon-bar\"></span> <span class=\"icon-bar\"></span> <span class=\"icon-bar\"></span></button> <a class=\"navbar-brand\" href=\"#\">Aurelia Pratices</a></div><div class=\"collapse navbar-collapse\" id=\"bs-example-navbar-collapse-1\"><ul class=\"nav navbar-nav\"><li repeat.for=\"row of router.navigation\" class=\"${row.isActive ? 'active' : ''}\"><a href.bind=\"row.href\">${ row.title }</a></li></ul></div></div></nav></template>"; });
-define('text!readme/read-me.html', ['module'], function(module) { module.exports = "<template><div class=\"panel panel-${style}\"><div class=\"panel-heading\">${title}</div><div class=\"panel-body\">${description}<p></p><ul class=\"list-group\"><li class=\"list-group-item\" repeat.for=\"item of items\">${item.description}</li></ul></div></div></template>"; });
-define('text!dynamicloader/dynamic-loader.css', ['module'], function(module) { module.exports = ".component{\r\n        margin-right: 0;\r\n    margin-left: 0;\r\n    background-color: #fff;\r\n    border-color: #ddd;\r\n    border-width: 1px;\r\n    border-radius: 4px 4px 0 0;\r\n    -webkit-box-shadow: none;\r\n    box-shadow: none;\r\n}"; });
+define('text!nosql/nosql.html', ['module'], function(module) { module.exports = "<template><require from=\"../readme/read-me\"></require><div class=\"container\"><read-me title.bind=\"title\" description.bind=\"description\" items.bind=\"items\"></read-me><button click.trigger=\"getData()\" class=\"btn btn-default\">Get Data</button><table class=\"table\" if.bind=\"makes.length > 0\"><th>Country of Origin</th><th>Display</th><th>Make Id</th><tr repeat.for=\"record of makes\"><td>${record.make_country}</td><td>${record.make_display}</td><td>${record.make_id}</td></tr></table></div></template>"; });
+define('text!readme/read-me.html', ['module'], function(module) { module.exports = "<template><div class=\"panel panel-${style}\" style=\"margin-top:10px\"><div class=\"panel-heading\"><span class=\"glyphicon glyphicon-info-sign\"></span>${title}</div><div class=\"panel-body\">${description}<p></p><b>Important things covered in this pratice</b><ul class=\"list-group\"><li class=\"list-group-item\" repeat.for=\"item of items\">${item.description}</li></ul></div></div></template>"; });
 //# sourceMappingURL=app-bundle.js.map

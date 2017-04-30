@@ -1,8 +1,8 @@
 <template>
   <require from="../readme/read-me"></require>
   <div class="container">
-    <read-me title.bind="title" description.bind="description"></read-me>
-
+    <read-me title.bind="title" description.bind="description" items.bind="items"></read-me>
+    <h3>Components to be loaded</h3>
     <ul class="list-group">
       <li class="list-group-item" repeat.for="component of components">
         <div class="btn-group" role="group" aria-label="..." style="float: right; margin-bottom: 5px;">

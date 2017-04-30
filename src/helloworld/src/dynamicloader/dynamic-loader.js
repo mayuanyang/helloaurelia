@@ -15,11 +15,20 @@ export class DynamicLoader {
         id: "3",
         name: "Contact Me",
         path: "../contactme/contactme"
+      },
+      {
+        id: "4",
+        name: "Home",
+        path: "../home/home"
       }
     ];
 
     this.title = "Dynamic Component Loading";
-    this.description = "It is quite often that you only know what components need to be loaded until runtime, Aurelia provides a dynamic loading element <compose> which will helo with that";
+    this.description = "It is quite often that you only know what components need to be loaded until runtime, Aurelia provides a dynamic loading element <compose> to accomplish that";
+    this.items = [
+      {description: "Add or Remove component on the fly"}, 
+      {description: "Each component has its own state"}
+      ];
     this.viewModels = [];
   }
 
