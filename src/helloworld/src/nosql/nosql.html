@@ -2,18 +2,24 @@
   <require from="../readme/read-me"></require>
   <div class="container">
     <read-me title.bind="title" description.bind="description" items.bind="items"></read-me>
-    <button click.trigger="getData()" class="btn btn-default">Get Data</button>
-    <table class="table" if.bind="makes.length > 0"> 
-      <th>Country of Origin</th>
-      <th>Display</th>
-      <th>Make Id</th>
-      <tr repeat.for="record of makes">
-        <td>${record.make_country}</td>
-        <td>${record.make_display}</td>
-        <td>${record.make_id}</td>
-      </tr>
+    <button click.trigger="getData()" class="btn btn-primary">Get Data</button>
+    <div class="progress" if.bind="isLoading">
+      <div class="progress-bar progress-bar-success progress-bar-striped active" role="progressbar" aria-valuenow="40" aria-valuemin="0"
+        aria-valuemax="100" style="width: 100%">
+        <span class="sr-only">40% Complete (success)</span>
+      </div>
+    </div>
+<table class="table" if.bind="makes.length > 0">
+  <th>Country of Origin</th>
+  <th>Display</th>
+  <th>Make Id</th>
+  <tr repeat.for="record of makes">
+    <td>${record.make_country}</td>
+    <td>${record.make_display}</td>
+    <td>${record.make_id}</td>
+  </tr>
 
-    </table>
-  </div>
-  
+</table>
+</div>
+
 </template>
