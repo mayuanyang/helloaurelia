@@ -1,6 +1,9 @@
 # helloaurelia
 This project is to pratise how to use Aurelia. I have been doing Angularjs, Angular 2 and ReactJS, and i think Aurelia is a awesome.
 
+## Demo
+The demo for this project has now deployed to my github page, [click here to have a look](https://mayuanyang.github.io)
+
 ## Scope
 A real world application usually has a frontend, a backend api with database to feed the content and authentication. This project will focus on these 3 big categories as well as their sub categories.
 
