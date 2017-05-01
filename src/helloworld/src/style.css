@@ -161,3 +161,7 @@ video {
 .col-sm-6{
     padding-left: 0px;
 }
+
+.video-thumb{
+    width: 350px;
+}

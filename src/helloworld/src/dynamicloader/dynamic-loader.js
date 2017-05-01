@@ -20,11 +20,22 @@ export class DynamicLoader {
         id: "4",
         name: "Home",
         path: "../home/home"
+      },
+      {
+        id: "5",
+        name: "Authentication",
+        path: "../authentication/authentication"
+      }
+      ,
+      {
+        id: "6",
+        name: "Database",
+        path: "../nosql/nosql"
       }
     ];
 
-    this.title = "Dynamic Component Loading";
-    this.description = "It is quite often that you only know what components need to be loaded until runtime, Aurelia provides a dynamic loading element <compose> to accomplish that";
+    this.title = "Dynamic UI Composition";
+    this.description = "It is quite often that you only know what components need to be loaded until runtime, Aurelia provides a mechanism for dynamic UI compisition, it can instruct Aurelia what component to load at runtime by using the <compose>";
     this.items = [
       {description: "Add or Remove component on the fly"}, 
       {description: "Each component has its own state"}

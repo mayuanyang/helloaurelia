@@ -14,7 +14,9 @@
 
     <div class="row" repeat.for="result of videos" style="margin-bottom:10px; margin-top: 10px;">
 <div class="col-md-6">
-  <img src="${result.snippet.thumbnails.high.url}" class="img-rounded" alt="" />
+  <a href="https://www.youtube.com/watch?v=${result.id.videoId}" target="_blank">
+    <img src="${result.snippet.thumbnails.high.url}" class="img-rounded video-thumb" alt="" />
+  </a>
 </div>
 <div class="col-md-6">
   <a href="https://www.youtube.com/watch?v=${result.id.videoId}" target="_blank">
