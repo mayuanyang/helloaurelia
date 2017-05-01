@@ -6,12 +6,46 @@
     <div class="progress" if.bind="isLoading">
       <div class="progress-bar progress-bar-success progress-bar-striped active" role="progressbar" aria-valuenow="40" aria-valuemin="0"
         aria-valuemax="100" style="width: 100%">
-        <span class="sr-only">40% Complete (success)</span>
-      </div>
+<span class="sr-only">40% Complete (success)</span>
+</div>
+
+</div>
+<form>
+  <div class="row">
+  <div class="col-lg-3">
+    <div class="input-group">
+      <span class="input-group-addon">
+        Country
+      </span>
+      <input type="text" class="form-control" aria-label="..." value.bind="country">
     </div>
+  </div>
+  <div class="col-lg-3">
+    <div class="input-group">
+      <span class="input-group-addon">
+        Display Name
+      </span>
+      <input type="text" class="form-control" aria-label="..." value.bind="displayName">
+    </div>
+  </div>
+  <div class="col-lg-3">
+    <div class="input-group">
+      <span class="input-group-addon">
+        Make Id
+      </span>
+      <input type="text" class="form-control" aria-label="..." value.bind="makeId">
+    </div>
+  </div>
+  <div class="col-lg-3">
+    <div class="input-group">
+      <button class="btn btn-primary" click.trigger="saveData()">Add</button>
+    </div>
+  </div>
+</div>
+</form>
 <table class="table" if.bind="makes.length > 0">
   <th>Country of Origin</th>
-  <th>Display</th>
+  <th>Display Name</th>
   <th>Make Id</th>
   <tr repeat.for="record of makes">
     <td>${record.make_country}</td>

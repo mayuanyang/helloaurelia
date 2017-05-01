@@ -2,8 +2,8 @@
   <require from="../readme/read-me"></require>
   <div class="container">
     <read-me title.bind="title" description.bind="description" items.bind="items"></read-me>
-    <button click.trigger="login()" class="btn btn-primary">Login</button>
-    <button click.trigger="logout()" class="btn btn-warning">Logout</button>
+    <button click.trigger="login()" class="btn btn-primary" if.bind="user == undefined">Login</button>
+    <button click.trigger="logout()" class="btn btn-warning" if.bind="user != undefined">Logout</button>
   </div>
   <br>
   <div class="container" if.bind="user != undefined">

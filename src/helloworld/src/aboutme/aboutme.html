@@ -1,3 +1,6 @@
 <template>
-  <h1>${message}</h1>
+  <require from="../readme/read-me"></require>
+  <div class="container">
+    <read-me title.bind="title" description.bind="description" items.bind="items"></read-me>
+  </div>
 </template>

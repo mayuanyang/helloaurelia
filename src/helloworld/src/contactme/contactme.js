@@ -1,5 +1,10 @@
 export class Contactme {     
   constructor() {
-    this.message = 'You can contact me by calling xxxxx';
+    this.title = 'Contact Me';
+    this.description = 'Router is working'
+    this.items = [];
+    this.displayName = "Eddy Ma";
+    this.photoURL = "";
+    this.email = "eddy.ma616@gmail.com"
   }
 }

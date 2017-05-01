@@ -2,7 +2,10 @@ export class Authentication {
   constructor() {
     this.title = "Authentication";
     this.description = "This pratice is to use Auth0 for the authentication, currently will only support Google"
-    this.items = [];
+    this.items = [
+      {description: "Integrete with Firebase authentication"},
+      {description: "Auth0 implementation"}
+    ];
     
       this.user = JSON.parse(localStorage.getItem("user"));
    console.log(this.user);

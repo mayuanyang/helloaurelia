@@ -7,6 +7,9 @@ export class Nosql {
       { description: "Use form and validation to add and update data" }
     ];
     this.isLoading = false;
+    this.country = "";
+    this.displayName = "";
+    this.makeId = "";
   }
 
   getData() {
@@ -18,6 +21,22 @@ export class Nosql {
       self.isLoading = false;
     }, function (errorObject) {
       console.log("The read failed: " + errorObject.code);
+    });
+  }
+
+  saveData() {
+    console.log(this.makes.length);
+    var nextId = this.makes.length;
+    firebase.database().ref('/Makes/' + nextId).set({
+      make_country: this.country,
+      make_display: this.displayName,
+      make_id: this.makeId,
+      make_is_common: 0
+    }, function (errorObject) {
+      if (errorObject) {
+        console.log("The save failed: " + errorObject);
+      }
+
     });
   }
 }

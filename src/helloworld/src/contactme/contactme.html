@@ -1,3 +1,24 @@
 <template>
-  <h1>${message}</h1>
+  <require from="../readme/read-me"></require>
+  <div class="container">
+    <read-me title.bind="title" description.bind="description" items.bind="items"></read-me>
+  </div>
+  <br>
+  <div class="container">
+    <div class="row">
+          <div class="col-sm-6">
+              <div class="business-card">
+                  <div class="media">
+                      <div class="media-left">
+                          <img class="media-object img-circle profile-img" src="${photoURL}">
+                      </div>
+                      <div class="media-body">
+                          <h2 class="media-heading">${displayName}</h2>
+                          <div class="mail"><a href="mailto:eddy.ma616@gmail.com">${email}</a> </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+    </div>
+</div>
 </template>
