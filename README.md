@@ -31,3 +31,18 @@ A real world application usually has a frontend, a backend api with database to 
 
 ### Authentication
 1. firebase authentication with google login
+
+## Note
+I have learned a lot of Aurelia cool features in this project
+
+### Convention
+Aurelia is very convention based, component's html and javascript files are hooked up by convention by default and also can be overriden which make it very flexiable
+
+### Unintrusive
+As it is convention based by default, the component js file does not need to import a lot of stuff until you need, no mandatory attribute is required and most of the time the component's javascript file is just plain javascript
+
+### Non Dirty Checking
+Unlike Angular2 and ReactJS, Aurelia follows the pub/sub pattern that only update the element if the model has changed without dirty checking each element, also unlike ReactJS has a virtual DOM for diff, Aurelia knows exactly which element to update hence save memory and CPU time
+
+### Dynamic UI Composition
+Aurelia provides a way to dynamicly load component and compose the way you like at run time
