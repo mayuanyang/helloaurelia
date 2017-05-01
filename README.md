@@ -6,21 +6,21 @@ A real world application usually has a frontend, a backend api with database to 
 
 ### Frontend
 1. Aurelia
- ..* Aurelia-cli
- ..* Templating
- ..* Router
- ..* Validation
- ..* Data binding
- ..* Behavior binding
- ..* Http with aurelia-fetch-client
- ..* Dynamic UI Composition with <compose>
- ..* Service module
- ..* Dependancy Injection
- ..* Authentication with Auth0, Firebase integration
- ..* Nosql database integration, Firebase integration
+ * Aurelia-cli
+ * Templating
+ * Router
+ * Validation
+ * Data binding
+ * Behavior binding
+ * Http with aurelia-fetch-client
+ * Dynamic UI Composition with <compose>
+ * Service module
+ * Dependancy Injection
+ * Authentication with Auth0, Firebase integration
+ * Nosql database integration, Firebase integration
 2. Testing
- ..* Karma
- ..* aurelia-testing
+ * Karma
+ * aurelia-testing
 
 ### Backend
 1. youtube api
