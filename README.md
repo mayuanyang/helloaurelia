@@ -52,3 +52,6 @@ Unlike Angular2 and ReactJS, Aurelia follows the pub/sub pattern that only updat
 
 ### Dynamic UI Composition
 Aurelia provides a way to dynamicly load component and compose the way you like at run time
+
+### TODO
+Add some animation
